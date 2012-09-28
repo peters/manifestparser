@@ -20,13 +20,15 @@ Extract manifest from binary blobs deployed to android or ios devices.
 
 ### Sample application
 
+Put the following code in your root directory where you installed manifestparser.
+
 ```
 var ApkReader = require('manifestparser/lib/apkreader');
-new ApkReader(target)
+new ApkReader('./node_modules/manifestparser/tests/fixtures/Snake.apk')
 .on('manifest', function(manifest) {
- 	process.stdout.write(manifest);
+    process.stdout.write(manifest);
 }).on('error', function(err) {
-	process.stdout.write(err);
+    process.stdout.write(err.toString());
 }).parse();
 ```
 
