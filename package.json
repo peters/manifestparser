@@ -14,10 +14,13 @@
 		, "underscore" : "*"
 		, "adm-zip" : "*"
 		, "xml2js" : "*"
-		, "mocha" : "*"
 	},
 	"devDependencies": {
-		"should": ">= 0.0.1"
+		"should": ">= 0.0.1",
+		, "mocha" : "*"
+	},
+	"scripts" : {
+		"pretest" : "make test"
 	},
 	"bin" : {
 		"manifestparser" : "./bin/manifestreader.js"
