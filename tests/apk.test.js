@@ -1,4 +1,4 @@
-var ApkReader = require('../lib/apkmanifestreader');
+var ApkReader = require('../lib/apkreader');
 	should = require('should'),
 	fs = require('fs'),
 	apkTarget = __dirname + '/fixtures/Snake.apk',

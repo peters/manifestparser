@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var // Dependencies
-	ApkReader = require('../lib/apkmanifestreader'),
-	IpaReader = require('../lib/ipamanifestreader'),
+	ApkReader = require('../lib/apkreader'),
+	IpaReader = require('../lib/ipareader'),
 	fs = require('fs'), 
 	// Parse cli arguments
 	argv = require('optimist')
