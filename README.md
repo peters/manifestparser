@@ -1,4 +1,4 @@
-manifestparser
+manifestparser  [![Build Status](https://secure.travis-ci.org/peters/manifestparser.png)](http://travis-ci.org/peters/manifestparser)
 ==============
 
 Extract manifest from binary blobs deployed to android or ios devices.
