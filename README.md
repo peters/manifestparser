@@ -22,7 +22,7 @@ Extract manifest from binary blobs deployed to android or ios devices.
 
 ```
 var ApkReader = require('manifestparser/apkreader');
-new require('manifestparser/apkreader')(target)
+new ApkReader(target)
 .on('manifest', function(manifest) {
  	process.stdout.write(manifest);
 }).on('error', function(err) {
