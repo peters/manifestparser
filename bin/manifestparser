@@ -43,4 +43,4 @@ new ApkReader(target, {
  	process.stdout.write(manifest);
 }).on('error', function(err) {
 	process.stdout.write(err);
-});
+}).parse();

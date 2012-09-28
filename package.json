@@ -23,7 +23,7 @@
 		"pretest" : "make test"
 	},
 	"bin" : {
-		"manifestparser" : "./bin/manifestreader.js"
+		"manifestparser" : "./bin/manifestreader"
 	},
 	"main": "index",
 	"engines": {
