@@ -21,7 +21,7 @@ Extract manifest from binary blobs deployed to android or ios devices.
 ### Sample application
 
 ```
-var ApkReader = require('manifestparser/apkreader');
+var ApkReader = require('manifestparser/lib/apkreader');
 new ApkReader(target)
 .on('manifest', function(manifest) {
  	process.stdout.write(manifest);
