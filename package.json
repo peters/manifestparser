@@ -1,6 +1,6 @@
 {
 	"name": "manifestparser",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Extract manifest from binary blobs deployed to android or ios devices",
 	"keywords": ["android", "apk", "ipa", "ios", "parser", "manifest"],
 	"author": "Peter Sunde <peter.sunde@gmail.com>",
