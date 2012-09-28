@@ -1,5 +1,5 @@
 {
-	"name": "manifestreader",
+	"name": "manifestparser",
 	"version": "0.1.0",
 	"description": "Extract manifest from binary blobs deployed to android or ios devices",
 	"keywords": ["android", "apk", "ipa", "ios", "parser", "manifest"],
@@ -20,7 +20,7 @@
 		"should": ">= 0.0.1"
 	},
 	"bin" : {
-		"apk2xml" : "./bin/manifestreader.js"
+		"manifestparser" : "./bin/manifestreader.js"
 	},
 	"main": "index",
 	"engines": {
