@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest package="com.example.android.snake">
+	<uses-permission name="android.permission.INTERNET">
+	</uses-permission>
+	<application label="Snake on a Phone">
+		<activity theme="resourceID 0x379009072" name="Snake" screenOrientation="resourceID 0x1" configChanges="resourceID 0x352">
+			<intent-filter>
+				<action name="android.intent.action.MAIN">
+				</action>
+				<category name="android.intent.category.LAUNCHER">
+				</category>
+			</intent-filter>
+		</activity>
+	</application>
+</manifest>

@@ -1,0 +1,29 @@
+{
+	"name": "manifestreader",
+	"version": "0.1.0",
+	"description": "Extract manifest from binary blobs deployed to android or ios devices",
+	"keywords": ["android", "apk", "ipa", "ios", "parser", "manifest"],
+	"author": "Peter Sunde <peter.sunde@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/peters/manifestparser.git"
+	},
+	"dependencies": {
+		"node-xml": "*"
+		, "optimist": "*"
+		, "underscore" : "*"
+		, "adm-zip" : "*"
+		, "xml2js" : "*"
+		, "mocha" : "*"
+	},
+	"devDependencies": {
+		"should": ">= 0.0.1"
+	},
+	"bin" : {
+		"apk2xml" : "./bin/manifestreader.js"
+	},
+	"main": "index",
+	"engines": {
+		"node": ">= 0.8.x"
+	}
+}
