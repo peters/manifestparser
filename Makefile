@@ -2,7 +2,7 @@ ALL_TESTS = $(shell find tests -name '*.test.js')
 REPORTER = spec
 UI = bdd
 
-all: test
+all: build test
 
 test:
 	@./node_modules/.bin/mocha \
@@ -13,7 +13,9 @@ test:
                 $(ALL_TESTS)
 
 clean: 
-
+	
 build: 
+	node-gyp configure
+	node-gyp build	
 
-.PHONY: test
+.PHONY: build test
