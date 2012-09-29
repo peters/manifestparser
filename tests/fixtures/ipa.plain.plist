@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+
+<dict>
+    <key>Hunspell_Dictionaries</key>
+    <dict>
+        <key>Rename</key>
+        <string>Dictionaries_(Hunspell)</string>
+    </dict>
+
+    <key>Utility</key>
+    <dict>
+        <key>Rename</key>
+        <string>Utilities</string>
+    </dict>
+
+    <key>Themes_(Springboard)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(SpringBoard)</string>
+    </dict>
+
+    <key>Themes_(SummerBoard)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(SpringBoard)</string>
+    </dict>
+
+    <key>Intelliborn</key>
+    <dict>
+        <key>Rename</key>
+        <string>Utilities</string>
+    </dict>
+
+    <key>SMS</key>
+    <dict>
+        <key>Rename</key>
+        <string>Messaging</string>
+    </dict>
+
+    <key>CarrierBundle</key>
+    <dict>
+        <key>Rename</key>
+        <string>Carrier_Bundles</string>
+    </dict>
+
+    <key>Messages</key>
+    <dict>
+        <key>Rename</key>
+        <string>Messaging</string>
+    </dict>
+
+    <key>Themes_(Locksceen)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(LockScreen)</string>
+    </dict>
+
+    <key>Themes_(Lockscree)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(LockScreen)</string>
+    </dict>
+
+    <key>Themes_(Losckscreen)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(LockScreen)</string>
+    </dict>
+
+    <key>Themes_(Video)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(Videos)</string>
+    </dict>
+
+    <key>Utilites</key>
+    <dict>
+        <key>Rename</key>
+        <string>Utilities</string>
+    </dict>
+
+    <key>Themes_(Lockscreen)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(LockScreen)</string>
+    </dict>
+
+    <key>Themes_(Complet)</key>
+    <dict>
+        <key>Rename</key>
+        <string>Themes_(Complete)</string>
+    </dict>
+
+    <key>Wallpapers</key>
+    <dict>
+        <key>Rename</key>
+        <string>Wallpaper</string>
+    </dict>
+
+    <key>Messageing</key>
+    <dict>
+        <key>Rename</key>
+        <string>Messaging</string>
+    </dict>
+
+    <key>Network</key>
+    <dict>
+        <key>Rename</key>
+        <string>Networking</string>
+    </dict>
+
+    <key>Tweak</key>
+    <dict>
+        <key>Rename</key>
+        <string>Tweaks</string>
+    </dict>
+
+    <key>Tweaks_2.0</key>
+    <dict>
+        <key>Rename</key>
+        <string>Tweaks_(2.0)</string>
+    </dict>
+
+    <key>Tweaks_2.1</key>
+    <dict>
+        <key>Rename</key>
+        <string>Tweaks_(2.1)</string>
+    </dict>
+
+    <key>Tweaks_2.2</key>
+    <dict>
+        <key>Rename</key>
+        <string>Tweaks_(2.2)</string>
+    </dict>
+
+    <key>Tweaks_3.0</key>
+    <dict>
+        <key>Rename</key>
+        <string>Tweaks_(3.0)</string>
+    </dict>
+</dict>
+
+</plist>
