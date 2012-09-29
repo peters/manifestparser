@@ -8,8 +8,7 @@ var ApkReader = require('../lib/apkreader');
 describe("Apk Reader", function() {
 	it('should parse android and return it as xml', function(done) {
 		new ApkReader(apkTarget, {
-			outputFormat: 'xml',
-			outputTarget: 'event' 
+			outputFormat: 'xml'
 		}).on('manifest', function(manifest) {
 			manifest.should.equal(apkXml);
 		 	done();
@@ -19,8 +18,7 @@ describe("Apk Reader", function() {
 	});
 	it('should parse android manifest and return it as json', function(done) {
 		new ApkReader(apkTarget, {
-			outputFormat: 'json',
-			outputTarget: 'event' 
+			outputFormat: 'json'
 		}).on('manifest', function(manifest) {
 			manifest.should.equal(apkJSON);
 		 	done();
@@ -28,10 +26,9 @@ describe("Apk Reader", function() {
 			throw err;
 		}).parse();
 	});
-	it('should return error if file does not exist', function(done) {
-		new ApkReader(apkTarget + "non-existant-file", {
-			outputFormat: 'json',
-			outputTarget: 'event' 
+	it('should throw error if file does not exist', function(done) {
+		new ApkReader(apkTarget + "non-existant-file.apk", {
+			outputFormat: 'json'
 		}).on('manifest', function(manifest) {
 			throw new Error("Should not have happend.");
 		}).on('error', function(err) {
@@ -39,22 +36,29 @@ describe("Apk Reader", function() {
 			done();
 		}).parse();
 	});
-	it('should by default output xml to stdout', function(done) {
-		new ApkReader(apkTarget)
-		.on('manifest', function(manifest) {
-			manifest.should.equal(apkXml);
-			done();
-		}).on('error', function(err) {
-			throw err;
-		}).parse();
+	it('should throw error if invalid output format', function(done) {
+		(function() {
+			new ApkReader(apkTarget, {
+				outputFormat: 'non-existant-format'
+			}).on('manifest', function(manifest) {
+				throw new Error("Should not have happend.");
+			}).on('error', function(err) {
+				throw new Error("Should not have happend.");
+			}).parse();			
+		}).should.throw();
+		done();
 	});
-	it('should not throw to stdout by default', function(done) {
-		new ApkReader(apkTarget + "non-existant-file")
-		.on('manifest', function(manifest) {
-			throw new Error("Should not have happend.");
-		}).on('error', function(err) {
-			err.should.be.an.instanceOf(Error);
-			done();
-		}).parse();
+	it('should throw error if invalid file format', function(done) {
+		(function() {
+			var plistBinary = fixturesDir + '/.apk-invalid';
+			new PlistReader(plistBinary, {
+				outputFormat: 'non-existant-format'
+			}).on('manifest', function(plist) {
+				throw new Error("Should not have happend.");
+			}).on('error', function(err) {
+				throw new Error("Should not have happend.");
+			}).parse();			
+		}).should.throw();
+		done();
 	});
 });

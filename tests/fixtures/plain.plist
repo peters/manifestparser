@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Id</key>
+		<integer>1</integer>
+		<key>Text</key>
+		<string>Available</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>2</integer>
+		<key>Text</key>
+		<string>Busy</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>3</integer>
+		<key>Text</key>
+		<string>At school</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>4</integer>
+		<key>Text</key>
+		<string>At the movies</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>5</integer>
+		<key>Text</key>
+		<string>At work</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>6</integer>
+		<key>Text</key>
+		<string>Battery about to die</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>7</integer>
+		<key>Text</key>
+		<string>Can't talk, WhatsApp only</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>8</integer>
+		<key>Text</key>
+		<string>In a meeting</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>9</integer>
+		<key>Text</key>
+		<string>At the gym</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>10</integer>
+		<key>Text</key>
+		<string>Sleeping</string>
+	</dict>
+	<dict>
+		<key>Id</key>
+		<integer>11</integer>
+		<key>Text</key>
+		<string>Urgent calls only</string>
+	</dict>
+</array>
+</plist>

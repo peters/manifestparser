@@ -2,45 +2,73 @@
 
 var // Dependencies
 	ApkReader = require('../lib/apkreader'),
+	PlistReader = require('../lib/plistreader'),
 	IpaReader = require('../lib/ipareader'),
 	fs = require('fs'), 
 	// Parse cli arguments
 	argv = require('optimist')
-	.usage("Extract manifest from android binary file.\n Usage: $0")
+	.usage("Extract xml from a binary blob. Supported formats are: .ipa, .apk, .plist, .zip.\nUsage: $0")
 	.string('output-format', ['xml', 'json'])
-	.string('output-target')
 	.default('output-format', 'xml')
-	.default('output-target', 'event')
 	.demand('target')
-	.demand('output-target')
-	.describe('target', 'Filename to read manifest from')
-	.describe('output-format', 'Manifest output format (xml|json)')
-	.describe('output-target', 'Output via event or stdout')
+	.describe('target', 'Target file to read')
+	.describe('output-format', 'Output format (xml|json)')
 	.argv,	
 	// Manifest output format
 	outputFormat = argv['output-format'],
-	// Manifest output to file
-	outputTarget = argv['output-target'] ?  argv['output-target'] : 'stdout', 
 	// Path to target
 	target = argv['target'],
-	// Type of file to parse
-	targetType = target.length >= 3 ? target.substr(-3).toLowerCase() : null;
+	// Type of target
+	isTargetType = function(type) {
+		var targetLw = target.toLowerCase();
+		return targetLw.substr(-(type.length)) === type;
+	}
 	
 // Always default to xml
 if(outputFormat !== 'json') outputFormat = 'xml';
 
-// Check if valid file type
-if(targetType !== 'apk' && targetType !== 'ipa') {
-	console.log("Invalid binary format for filename " + target + ". Supported formats are: .apk, .ipa.");
+// Check if we support target format
+if(!isTargetType('.ipa') && !isTargetType('.apk') &&
+    !isTargetType('.zip') && !isTargetType('.plist')) {
+	process.write.stdout("Invalid binary format for filename " + target + ". Supported formats are: .ipa, .apk, .plist, .zip");
 	process.exit(1);
 }
 
-// Parse actual apk manifest
-new ApkReader(target, {
-	outputFormat: outputFormat,
-	outputTarget: outputTarget 
-}).on('manifest', function(manifest) {
- 	process.stdout.write(manifest);
+// Only support extracting the android manifest for apk files
+if(isTargetType('.apk')) {
+
+	// Parse actual apk manifest
+	new ApkReader(target, {
+		outputFormat: outputFormat
+	}).on('manifest', function(manifest) {
+	 	process.stdout.write(manifest);
+	}).on('error', function(err) {
+		process.stdout.write(err);
+	}).parse();
+	
+	return;
+
+} 
+
+if(isTargetType('.ipa')) {
+	
+	new IpaReader(target, {
+		outputFormat: outputFormat
+	}).on('plist', function(plist) {
+	 	process.stdout.write(plist);
+	}).on('error', function(err) {
+		process.stdout.write(err);
+	}).parse();
+	
+	return;
+	
+}
+
+// Extract plist from a zip file or single file
+new PlistReader(target, {
+	outputFormat: outputFormat
+}).on('plist', function(plist) {
+ 	process.stdout.write(plist);
 }).on('error', function(err) {
 	process.stdout.write(err);
 }).parse();
