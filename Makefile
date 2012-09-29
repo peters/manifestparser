@@ -15,6 +15,9 @@ test:
 clean: 
 	
 build: 
-	node-gyp configure build
+	node-gyp configure build -r
+
+build-debug:
+	node-gyp configure build -d
 
 .PHONY: build test
