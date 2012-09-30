@@ -1,0 +1,145 @@
+{
+    "plist": {
+        "$": {
+            "version": "1.0"
+        },
+        "array": [
+            {
+                "dict": [
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "1"
+                        ],
+                        "string": [
+                            "Available"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "2"
+                        ],
+                        "string": [
+                            "Busy"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "3"
+                        ],
+                        "string": [
+                            "At school"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "4"
+                        ],
+                        "string": [
+                            "At the movies"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "5"
+                        ],
+                        "string": [
+                            "At work"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "6"
+                        ],
+                        "string": [
+                            "Battery about to die"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "7"
+                        ],
+                        "string": [
+                            "Can't talk, WhatsApp only"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "8"
+                        ],
+                        "string": [
+                            "In a meeting"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "9"
+                        ],
+                        "string": [
+                            "At the gym"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "10"
+                        ],
+                        "string": [
+                            "Sleeping"
+                        ]
+                    },
+                    {
+                        "key": [
+                            "Id",
+                            "Text"
+                        ],
+                        "integer": [
+                            "11"
+                        ],
+                        "string": [
+                            "Urgent calls only"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
