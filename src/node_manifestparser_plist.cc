@@ -114,7 +114,8 @@ async_rtn parse_plist_binary(uv_work_t *req) {
 
         // Make sure that file is available
         if (-1 == stat(filename, &fileInfo)) {
-            r->ex = "Unable to stat file";
+            r->ex = "Unable to stat file: ";
+            r->ex += filename;
             return;
         }
 
@@ -186,13 +187,13 @@ async_rtn parse_plist_binary_AFTER(uv_work_t *req) {
     Handle<Value> argv[1];
 
     // Output error message
-    if (false == r->ex.empty()) {
-        argv[0] = Exception::Error(String::New(r->ex.c_str()));
-        argv[1] = Null();
-        // Output parsed xml
-    } else {
+    if (r->ex.empty()) {
         argv[0] = Null();
         argv[1] = String::New(r->finalXml.c_str());
+    // Output parsed xml
+    } else {
+        argv[0] = Exception::Error(String::New(r->ex.c_str()));
+        argv[1] = Null();
     }
 
     // Catch any exceptions
