@@ -20,6 +20,9 @@
 #include <node.h>
 #include <node_version.h>
 
+#ifndef SRC_NODE_ASYNC_SHIM_H_
+#define SRC_NODE_ASYNC_SHIM_H_
+
 #define THROW(x, m) return ThrowException(x(String::New(m)))
 
 #define BEGIN_ASYNC(_data, async, after) \
@@ -28,3 +31,5 @@
     uv_queue_work(uv_default_loop(), _req, async, after);
 
 typedef void async_rtn;
+
+#endif  // SRC_NODE_ASYNC_SHIM_H_
