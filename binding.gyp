@@ -6,10 +6,13 @@
                 "src/bindings.cc",
                 "src/node_manifestparser_plist.cc"
             ],
-	   "conditions": [
+            "include_dirs": [
+            	"/usr/include/plist"
+            ],
+		   "conditions": [
 	          ['OS=="linux"', {
-			    "cflags" : ["-O3", "-g", "-D__STDC_CONSTANT_MACROS", "-D_FILE_OFFSET_BITS=64", "-D_LARGEFILE_SOURCE", "-Wall"],
-	    	    "libraries" : ["-lplist"]
+			    "cflags" : ["-D__STDC_CONSTANT_MACROS", "-D_FILE_OFFSET_BITS=64", "-D_LARGEFILE_SOURCE", "-Wall"],
+			    "libraries" : ['-lplist']
           	  }]
            ],
 		}
