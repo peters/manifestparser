@@ -27,7 +27,7 @@ describe("Plist Reader", function() {
 			throw new Error("Should not have happend.");
 		}).parse();
 	});
-	it.skip('should parse plist xml and return it as xml', function(done) {
+	it('should parse plist xml and return it as xml', function(done) {
 		var plistPlain = fixturesDir + '/plain.plist',
 			plistXml = fs.readFileSync(plistPlain).toString('utf-8');
 		new PlistReader(plistPlain, {
