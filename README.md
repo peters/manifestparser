@@ -1,8 +1,8 @@
 manifestparser  [![Build Status](https://secure.travis-ci.org/peters/manifestparser.png)](http://travis-ci.org/peters/manifestparser)
 ==============
 
-The manifestparser will allow you to extract AndroidManifest.xml from a compiled .apk blob. It also supports
-parsing ipa (parses all it can be find). XML is the default output format, but you can easily convert parsed xml to json.
+Manifestparser allows you to extract AndroidManifest.xml from android (apk) binary blobs. It also supports parsing
+binary plists (Apple propitiatory format) from ipa (iOS) binary blobs. 
 
 Works on both node 0.8.x and 0.9.x (unstable)
 
@@ -25,7 +25,37 @@ You can find more examples by looking in the tests folder.
  
     $ ./bin/manifestparser --target tests/fixtures/Snake.apk --output-format xml
     $ ./bin/manifestparser --target tests/fixtures/Snake.apk --output-format json
-     
+
+### Sample application (Parse a binary plist)
+
+Put the following code in your root directory where you installed manifestparser.
+
+```
+var PlistReader = require('manifestparser/lib/plistreader');
+new PlistReader('./node_modules/manifestparser/tests/fixtures/binary.plist')
+.on('plist', function(plist, filename) {
+    process.stdout.write(plist); // Outputs raw xml
+}).on('error', function(err) {
+    process.stdout.write(err.toString());
+});
+```
+
+### Sample application (Extract plist files from a zip archive)
+
+Put the following code in your root directory where you installed manifestparser.
+
+```
+var PlistReader = require('manifestparser/lib/plistreader');
+new PlistReader('./node_modules/manifestparser/tests/fixtures/Plists.zip')
+.on('plist', function(plist, filename) {
+    process.stdout.write(filename);
+}).on('error', function(err) {
+    process.stdout.write(err.toString());
+}).on('end', function(plists) {
+    process.stdout.write("Finished parsing " + plists.length);
+}).parse();
+```
+
 ### Sample application (Parse all plists within an .ipa)
 
 Put the following code in your root directory where you installed manifestparser.
