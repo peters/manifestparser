@@ -30,8 +30,6 @@
 
 #include "./node_async_shim.h"
 
-#define UNUSED
-
 // Seriously google?
 using v8::Handle;
 using v8::String;
