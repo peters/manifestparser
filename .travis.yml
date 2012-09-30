@@ -3,3 +3,6 @@ node_js:
     - 0.9
     - 0.8
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libplist++-dev
