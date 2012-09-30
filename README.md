@@ -4,6 +4,8 @@ manifestparser  [![Build Status](https://secure.travis-ci.org/peters/manifestpar
 The manifestparser will allow you to extract AndroidManifest.xml from a compiled .apk blob. It also supports
 parsing ipa (parses all it can be find). XML is the default output format, but you can easily convert parsed xml to json.
 
+Works on both node 0.8.x and 0.9.x (unstable)
+
 ### Requirements (Ubuntu 12.04)
 	
     $ sudo apt-get install libplist-dev
