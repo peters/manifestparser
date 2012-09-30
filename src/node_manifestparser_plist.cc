@@ -186,8 +186,8 @@ async_rtn parse_plist_binary_AFTER(uv_work_t *req) {
     Handle<Value> argv[1];
 
     // Output error message
-    if (r->ex.empty() == false) {
-        argv[0] = v8::ThrowException(String::New(r->ex.c_str()));
+    if (false == r->ex.empty()) {
+        argv[0] = Exception::Error(String::New(r->ex.c_str()));
         argv[1] = Null();
         // Output parsed xml
     } else {
