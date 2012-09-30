@@ -6,7 +6,7 @@ parsing ipa (parses all it can be find). XML is the default output format, but y
 
 ### Requirements (Ubuntu 12.04)
 	
-    $ sudo apt-get install libplist++-dev
+    $ sudo apt-get install libplist-dev
 
 ### Installation
 
