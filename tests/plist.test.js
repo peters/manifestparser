@@ -12,7 +12,7 @@ describe("Plist Reader", function() {
 			plist.should.equal(plistLocal);
 		 	done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();
 	});
 	it('should parse binary plist and return it as json', function(done) {
@@ -24,7 +24,7 @@ describe("Plist Reader", function() {
 			plist.should.equal(plistJSON);
 		 	done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();
 	});
 	it('should parse plist xml and return it as xml', function(done) {
@@ -36,11 +36,11 @@ describe("Plist Reader", function() {
 			plist.should.equal(plistXml);
 		 	done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();
 	});
 	it('should parse plist xml and return it as json', function(done) {
-		var plistPlain = fixturesDir + '/plain.plist',
+		var plistPlain = fixturesDir + '/plain1.plist',
 			plistJSON = fs.readFileSync(fixturesDir + '/plain.plist.json').toString('utf-8');
 		new PlistReader(plistPlain, {
 			outputFormat: 'json'
@@ -48,7 +48,7 @@ describe("Plist Reader", function() {
 			plist.should.equal(plistJSON);
 		 	done();
 		}).on('error', function(err) {
-			process.stdout.write(err);
+			throw err;
 		}).parse();
 	});
 	it('should throw error on invalid filename (.test)', function(done) {
@@ -58,7 +58,7 @@ describe("Plist Reader", function() {
 			}).on('plist', function(plist) {
 				throw new Error("Should not happen");
 			}).on('error', function(err) {
-				throw new Error("Should not happen");
+				throw err;
 			}).parse();
 		}).should.throw();
 		done();
@@ -71,7 +71,7 @@ describe("Plist Reader", function() {
 			}).on('plist', function(plist) {
 				throw new Error("Should not have happend.");
 			}).on('error', function(err) {
-				throw new Error("Should not have happend.");
+				throw err;
 			}).parse();			
 		}).should.throw();
 		done();
@@ -84,7 +84,7 @@ describe("Plist Reader", function() {
 			}).on('plist', function(plist) {
 				throw new Error("Should not have happend.");
 			}).on('error', function(err) {
-				throw new Error("Should not have happend.");
+				throw err;
 			}).parse();			
 		}).should.throw();
 		done();
@@ -108,7 +108,7 @@ describe("Plist Reader", function() {
 			files[1].content.should.equal(plistXml);
 			done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();			
 	});
 	it('should work on zip files and output as json', function(done) {
@@ -130,7 +130,7 @@ describe("Plist Reader", function() {
 			files[1].content.should.equal(plistJSON);
 			done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();			
 	});
 	it('it should work on ipa (ios files) and output xml', function(done) {
@@ -145,7 +145,7 @@ describe("Plist Reader", function() {
 			files.should.length(9);
 			done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();
 	});
 	it('it should work on ipa (ios files) and output json', function(done) {
@@ -162,7 +162,7 @@ describe("Plist Reader", function() {
 			files.should.length(9);
 			done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();
 	});
 });

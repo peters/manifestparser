@@ -13,7 +13,7 @@ describe("Apk Reader", function() {
 			manifest.should.equal(apkXml);
 		 	done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();
 	});
 	it('should parse android manifest and return it as json', function(done) {
@@ -23,7 +23,7 @@ describe("Apk Reader", function() {
 			manifest.should.equal(apkJSON);
 		 	done();
 		}).on('error', function(err) {
-			throw new Error("Should not have happend.");
+			throw err;
 		}).parse();
 	});
 	it('should throw error if file does not exist', function(done) {
@@ -43,7 +43,7 @@ describe("Apk Reader", function() {
 			}).on('manifest', function(manifest) {
 				throw new Error("Should not have happend.");
 			}).on('error', function(err) {
-				throw new Error("Should not have happend.");
+				throw err;
 			}).parse();			
 		}).should.throw();
 		done();
@@ -56,7 +56,7 @@ describe("Apk Reader", function() {
 			}).on('manifest', function(plist) {
 				throw new Error("Should not have happend.");
 			}).on('error', function(err) {
-				throw new Error("Should not have happend.");
+				throw err;
 			}).parse();			
 		}).should.throw();
 		done();
