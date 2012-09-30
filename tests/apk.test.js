@@ -13,7 +13,7 @@ describe("Apk Reader", function() {
 			manifest.should.equal(apkXml);
 		 	done();
 		}).on('error', function(err) {
-			throw err;
+			throw new Error("Should not have happend.");
 		}).parse();
 	});
 	it('should parse android manifest and return it as json', function(done) {
@@ -23,7 +23,7 @@ describe("Apk Reader", function() {
 			manifest.should.equal(apkJSON);
 		 	done();
 		}).on('error', function(err) {
-			throw err;
+			throw new Error("Should not have happend.");
 		}).parse();
 	});
 	it('should throw error if file does not exist', function(done) {

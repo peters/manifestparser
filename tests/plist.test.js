@@ -12,7 +12,7 @@ describe("Plist Reader", function() {
 			plist.should.equal(plistLocal);
 		 	done();
 		}).on('error', function(err) {
-			process.stdout.write(err);
+			throw new Error("Should not have happend.");
 		}).parse();
 	});
 	it('should parse binary plist and return it as json', function(done) {
@@ -24,7 +24,7 @@ describe("Plist Reader", function() {
 			plist.should.equal(plistJSON);
 		 	done();
 		}).on('error', function(err) {
-			process.stdout.write(err);
+			throw new Error("Should not have happend.");
 		}).parse();
 	});
 	it('should parse plist xml and return it as xml', function(done) {
@@ -36,7 +36,7 @@ describe("Plist Reader", function() {
 			plist.should.equal(plistXml);
 		 	done();
 		}).on('error', function(err) {
-			process.stdout.write(err);
+			throw new Error("Should not have happend.");
 		}).parse();
 	});
 	it('should parse plist xml and return it as json', function(done) {
