@@ -3,7 +3,6 @@
 var // Dependencies
 	ApkReader = require('../lib/apkreader'),
 	PlistReader = require('../lib/plistreader'),
-	IpaReader = require('../lib/ipareader'),
 	fs = require('fs'), 
 	// Parse cli arguments
 	argv = require('optimist')
