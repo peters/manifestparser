@@ -24,7 +24,7 @@ You can find more examples by looking in the tests folder.
     $ ./bin/manifestparser --target tests/fixtures/Snake.apk --output-format xml
     $ ./bin/manifestparser --target tests/fixtures/Snake.apk --output-format json
      
-### Sample application (Parse all plists in an .ipa (ios application))
+### Sample application (Parse all plists within an .ipa)
 
 Put the following code in your root directory where you installed manifestparser.
 
@@ -35,6 +35,8 @@ new PlistReader('./node_modules/manifestparser/tests/fixtures/Snake.ipa')
     process.stdout.write(filename); // Should be 9 of them in the Snake application
 }).on('error', function(err) {
     process.stdout.write(err.toString());
+}).on('end', function(plists) {
+    process.stdout.write("Finished parsing " + plists.length);
 }).parse();
 ```
 
