@@ -50,21 +50,7 @@ if(isTargetType('.apk')) {
 
 } 
 
-if(isTargetType('.ipa')) {
-	
-	new IpaReader(target, {
-		outputFormat: outputFormat
-	}).on('plist', function(plist) {
-	 	process.stdout.write(plist);
-	}).on('error', function(err) {
-		process.stdout.write(err);
-	}).parse();
-	
-	return;
-	
-}
-
-// Extract plist from a zip file or single file
+// Extract plist from a zip, ipa or single file
 new PlistReader(target, {
 	outputFormat: outputFormat
 }).on('plist', function(plist) {

@@ -134,7 +134,10 @@ async_rtn parse_plist_binary(uv_work_t *req) {
 			plist_to_xml(plist, &plist_xml, &size_out);
 			r->finalXml = plist_xml;
 		} else {
-			r->finalXml = r->input;
+			// This kinda sux, but it works
+			plist_from_xml(r->input, r->length, &plist);
+			plist_to_xml(plist, &plist_xml, &size_out);
+			r->finalXml = plist_xml;
 		}
 
 		// Release memory
@@ -194,7 +197,7 @@ Handle<Value> node_parse_plist(const Arguments& args) {
 	}
 
 	// Our async parser structure
-	parsexml *request = new parsexml;
+	parsexml *request = new parsexml();
 
 	// Callback when we are finished
 	request->callback = Persistent<Function>::New(

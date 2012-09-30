@@ -12,8 +12,10 @@
 		"node-xml": "*"
 		, "optimist": "*"
 		, "underscore" : "*"
-		, "adm-zip" : "*"
 		, "xml2js" : "*"
+		, "readable-stream" : "0.0.2"
+		, "unzip" : "0.0.4"
+		, "adm-zip" : "*"
 	},
 	"devDependencies": {
 		"should": "*"
