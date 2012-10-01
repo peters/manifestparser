@@ -21,12 +21,11 @@
 
 #include <v8.h>
 #include <node.h>
+#include <uv.h>
 #include <node_buffer.h>
 #include <plist/plist.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <inttypes.h>
-#include <iostream>
+#include <streambuf>
+#include <fstream>
 
 #include "./node_async_shim.h"
 
@@ -50,6 +49,10 @@ using node::Buffer;
 using node::FatalException;
 
 using std::string;
+using std::ifstream;
+using std::istreambuf_iterator;
+using std::ios;
+using std::basic_ifstream;
 
 namespace plist {
 
@@ -88,9 +91,6 @@ async_rtn parse_plist_binary(uv_work_t *req) {
 
     /// Check if we need to open a file
     if (r->type == 1) {
-        // Pointer to file handle
-        FILE *iplist = NULL;
-
         // Actual contents of file
         char *plist_xml = NULL;
 
@@ -98,10 +98,7 @@ async_rtn parse_plist_binary(uv_work_t *req) {
         char *plist_xml_converted = NULL;
 
         // Filename
-        const char *filename = r->input;
-
-        // Structure for file information
-        struct stat fileInfo;
+        std::string filename = r->input;
 
         // Size of plist_xml
         uint32_t size_in = 0;
@@ -112,27 +109,35 @@ async_rtn parse_plist_binary(uv_work_t *req) {
         // Plist structure
         plist_t plist = NULL;
 
-        // Make sure that file is available
-        if (-1 == stat(filename, &fileInfo)) {
-            r->ex = "Unable to stat file: ";
+        // Try to open xml file for reading
+        std::ifstream fileStream(filename.c_str());
+
+        // Container for xml
+        std::string contents;
+
+        // Check if opening file for reading failed
+        if (!fileStream.is_open()) {
+            r->ex = "Unable to open file for reading: ";
             r->ex += filename;
             return;
         }
 
-        // Size of file contents
-        size_in = fileInfo.st_size;
+        // Seek until end
+        fileStream.seekg(0, std::ios::end);
 
-        // Allocate memory for the contents of input file
-        plist_xml = reinterpret_cast<char*>(malloc(size_in + 1));
+        // Pre-allocate memory
+        contents.reserve(fileStream.tellg());
+        fileStream.seekg(0, std::ios::beg);
 
-        // Open file for reading
-        iplist = fopen(filename, "rb");
+        // Get xml
+        contents.assign((std::istreambuf_iterator<char>(fileStream)),
+            std::istreambuf_iterator<char>());
 
-        // Read all bytes
-        fread(plist_xml, sizeof(plist_xml), size_in, iplist);
+        // Convert to char*
+        plist_xml = reinterpret_cast<char*&>(contents);
 
-        // Close file handle
-        fclose(iplist);
+        // Length of xml read
+        size_in = contents.length();
 
         // Check if binary xml
         if (memcmp(plist_xml, INPUT_IS_BINARY, 8) == 0) {
@@ -141,15 +146,14 @@ async_rtn parse_plist_binary(uv_work_t *req) {
             // Convert plist to xml
             plist_to_xml(plist, &plist_xml_converted, &size_out);
             // Output xml
-            r->finalXml = plist_xml_converted;
+            r->finalXml = std::string(plist_xml_converted);
         } else {
             // Output xml
-            r->finalXml = plist_xml;
+            r->finalXml = std::string(plist_xml);
         }
 
         // Release memory
         plist_free(plist);
-        free(plist_xml);
 
     } else if (r->type == 2) {
         // Plist structure
@@ -175,7 +179,6 @@ async_rtn parse_plist_binary(uv_work_t *req) {
 
         // Release memory
         plist_free(plist);
-        free(plist_xml);
     }
 }
 
