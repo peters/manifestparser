@@ -32,7 +32,6 @@ describe('Plist Reader', function() {
         var plistBinary = common.fixturesDir + '/binary.plist',
             plistLocal = fs.readFileSync(
                     common.fixturesDir + '/plain.plist').toString('utf-8');
-        console.log("Read file: " + plistBinary);
         new PlistReader(plistBinary, {
             outputFormat: 'xml'
         }).on('plist', function(plist) {

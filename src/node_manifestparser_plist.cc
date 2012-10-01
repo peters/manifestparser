@@ -115,12 +115,17 @@ async_rtn parse_plist_binary(uv_work_t *req) {
         // Container for xml
         std::string contents;
 
+        printf("\nparse_plist_binary(): open %s", filename.c_str());
+
         // Check if opening file for reading failed
         if (!fileStream.is_open()) {
+            printf("\nparse_plist_binary() failed: %s", filename.c_str());
             r->ex = "Unable to open file for reading: ";
             r->ex += filename;
             return;
         }
+
+	printf("\nparse_plist_binary(): success %s", filename.c_str());
 
         // Seek until end
         fileStream.seekg(0, std::ios::end);
@@ -237,6 +242,7 @@ Handle<Value> node_parse_plist(const Arguments& args) {
     // Check single file
     if (args[0]->IsString()) {
         request->input = V8GetString(args[0]->ToString());
+	printf("\nSingle file %s\n", request->input);
         request->type = 1;
         // Check if buffer
     } else if (Buffer::HasInstance(args[0])) {
