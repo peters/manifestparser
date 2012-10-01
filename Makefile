@@ -19,10 +19,10 @@ test: build
 clean: 
 	@node-gyp clean
 	
-build: 
-	@node-gyp configure build -r
+build: clean
+	@node-gyp rebuild -r
 
-build-debug:
-	@node-gyp configure build -d
+build-debug: clean
+	@node-gyp rebuild -d
 
 .PHONY: test clean
