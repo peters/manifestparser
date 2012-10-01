@@ -1,4 +1,4 @@
-manifestparser  [![Build Status](https://secure.travis-ci.org/peters/manifestparser.png)](http://travis-ci.org/peters/manifestparser)
+manifestparser
 ==============
 
 Manifestparser allows you to extract AndroidManifest.xml from android (apk) binary blobs. It also supports parsing
@@ -13,7 +13,11 @@ Works on both node 0.8.x and 0.9.x (unstable)
 ### Installation
 
     $ npm install manifestparser
-    
+
+### Run test suite
+	
+    $ make test    
+
 ### Building
   
     $ git clone https://github.com/peters/manifestparser.git

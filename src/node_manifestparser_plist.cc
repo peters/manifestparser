@@ -26,7 +26,6 @@
 #include <plist/plist.h>
 #include <streambuf>
 #include <fstream>
-#include <cassert>
 
 #include "./node_async_shim.h"
 
@@ -106,9 +105,6 @@ async_rtn parse_plist_binary(uv_work_t *req) {
 
         // Plist structure
         plist_t plist = NULL;
-
-        assert(r->input != NULL);
-        assert(*r->input != '\0');
 
         // Try to open xml file for reading
         std::ifstream fileStream(r->input);

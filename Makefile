@@ -8,7 +8,7 @@ all: build
 lint-cpp: 
 	@./tools/cpplint.py $(ALL_SRC_FILES)
 
-test: build
+test:
 	@./node_modules/.bin/mocha \
                 --require should \
                 --reporter $(REPORTER) \
