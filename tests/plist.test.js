@@ -163,7 +163,7 @@ describe('Plist Reader', function() {
             throw err;
         }).parse();
     });
-    it('it should work on ipa (ios files) and output xml', function(done) {
+    it('should work on ipa (ios files) and output xml', function(done) {
         var ipaBinary = fixturesDir + '/Snake.ipa',
             plists = 0;
         new PlistReader(ipaBinary, {
@@ -178,7 +178,7 @@ describe('Plist Reader', function() {
             throw err;
         }).parse();
     });
-    it('it should work on ipa (ios files) and output json', function(done) {
+    it('should work on ipa (ios files) and output json', function(done) {
         var ipaBinary = fixturesDir + '/Snake.ipa',
             plists = 0;
         new PlistReader(ipaBinary, {
