@@ -97,9 +97,6 @@ async_rtn parse_plist_binary(uv_work_t *req) {
         // Converted xml
         char *plist_xml_converted = NULL;
 
-        // Filename
-        std::string filename = r->input;
-
         // Size of plist_xml
         uint32_t size_in = 0;
 
@@ -110,22 +107,22 @@ async_rtn parse_plist_binary(uv_work_t *req) {
         plist_t plist = NULL;
 
         // Try to open xml file for reading
-        std::ifstream fileStream(filename.c_str());
+        std::ifstream fileStream(r->input);
 
         // Container for xml
         std::string contents;
 
-        printf("\nparse_plist_binary(): open %s", filename.c_str());
+        printf("\nparse_plist_binary(): open %s", r->input);
 
         // Check if opening file for reading failed
         if (!fileStream.is_open()) {
-            printf("\nparse_plist_binary() failed: %s", filename.c_str());
+            printf("\nparse_plist_binary() failed: %s", r->input);
             r->ex = "Unable to open file for reading: ";
-            r->ex += filename;
+ 	    r->ex.append(r->input);
             return;
         }
 
-	printf("\nparse_plist_binary(): success %s", filename.c_str());
+	printf("\nparse_plist_binary(): success %s", r->input);
 
         // Seek until end
         fileStream.seekg(0, std::ios::end);
@@ -137,6 +134,9 @@ async_rtn parse_plist_binary(uv_work_t *req) {
         // Get xml
         contents.assign((std::istreambuf_iterator<char>(fileStream)),
             std::istreambuf_iterator<char>());
+
+	// Close file
+	fileStream.close();
 
         // Convert to char*
         plist_xml = reinterpret_cast<char*&>(contents);
