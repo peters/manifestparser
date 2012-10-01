@@ -26,12 +26,12 @@
 var PlistReader = require('../lib/plistreader');
     should = require('should'),
     fs = require('fs'),
-    fixturesDir = __dirname + '/fixtures';
+    common = require('./common');
 describe('Plist Reader', function() {
     it('should parse binary plist and return it as xml', function(done) {
-        var plistBinary = fixturesDir + '/binary.plist',
+        var plistBinary = common.fixturesDir + '/binary.plist',
             plistLocal = fs.readFileSync(
-                    fixturesDir + '/plain.plist').toString('utf-8');
+                    common.fixturesDir + '/plain.plist').toString('utf-8');
         new PlistReader(plistBinary, {
             outputFormat: 'xml'
         }).on('plist', function(plist) {
@@ -42,9 +42,9 @@ describe('Plist Reader', function() {
         }).parse();
     });
     it('should parse binary plist and return it as json', function(done) {
-        var plistBinary = fixturesDir + '/binary.plist',
+        var plistBinary = common.fixturesDir + '/binary.plist',
             plistJSON = fs.readFileSync(
-                    fixturesDir + '/binary.plist.json').toString('utf-8');
+                    common.fixturesDir + '/binary.plist.json').toString('utf-8');
         new PlistReader(plistBinary, {
             outputFormat: 'json'
         }).on('plist', function(plist) {
@@ -55,7 +55,7 @@ describe('Plist Reader', function() {
         }).parse();
     });
     it('should parse plist xml and return it as xml', function(done) {
-        var plistPlain = fixturesDir + '/plain.plist',
+        var plistPlain = common.fixturesDir + '/plain.plist',
             plistXml = fs.readFileSync(plistPlain).toString('utf-8');
         new PlistReader(plistPlain, {
             outputFormat: 'xml'
@@ -67,9 +67,9 @@ describe('Plist Reader', function() {
         }).parse();
     });
     it('should parse plist xml and return it as json', function(done) {
-        var plistPlain = fixturesDir + '/plain.plist',
+        var plistPlain = common.fixturesDir + '/plain.plist',
             plistJSON = fs.readFileSync(
-                    fixturesDir + '/plain.plist.json').toString('utf-8');
+                    common.fixturesDir + '/plain.plist.json').toString('utf-8');
         new PlistReader(plistPlain, {
             outputFormat: 'json'
         }).on('plist', function(plist) {
@@ -81,7 +81,7 @@ describe('Plist Reader', function() {
     });
     it('should throw error on invalid filename (.test)', function(done) {
         (function() {
-            new PlistReader(fixturesDir + '/non-existant-file.test', {
+            new PlistReader(common.fixturesDir + '/non-existant-file.test', {
                 outputFormat: 'xml'
             }).on('plist', function(plist) {
                 throw new Error('Should not happen');
@@ -93,7 +93,7 @@ describe('Plist Reader', function() {
     });
     it('should throw error if invalid output format', function(done) {
         (function() {
-            var plistBinary = fixturesDir + '/plain.plist';
+            var plistBinary = common.fixturesDir + '/plain.plist';
             new PlistReader(plistBinary, {
                 outputFormat: 'non-existant-format'
             }).on('plist', function(plist) {
@@ -106,7 +106,7 @@ describe('Plist Reader', function() {
     });
     it('should throw error if invalid file format', function(done) {
         (function() {
-            var plistBinary = fixturesDir + '/plain.plist-invalid';
+            var plistBinary = common.fixturesDir + '/plain.plist-invalid';
             new PlistReader(plistBinary, {
                 outputFormat: 'non-existant-format'
             }).on('plist', function(plist) {
@@ -118,9 +118,9 @@ describe('Plist Reader', function() {
         done();
     });
     it('should work on zip files and output as xml', function(done) {
-        var plistBinary = fixturesDir + '/Plists.zip',
+        var plistBinary = common.fixturesDir + '/Plists.zip',
             plistXml = fs.readFileSync(
-                    fixturesDir + '/plain.plist').toString('utf-8'),
+                    common.fixturesDir + '/plain.plist').toString('utf-8'),
             asserts = 0;
         new PlistReader(plistBinary, {
             outputFormat: 'xml'
@@ -141,9 +141,9 @@ describe('Plist Reader', function() {
         }).parse();
     });
     it('should work on zip files and output as json', function(done) {
-        var plistBinary = fixturesDir + '/Plists.zip',
+        var plistBinary = common.fixturesDir + '/Plists.zip',
             plistJSON = fs.readFileSync(
-                    fixturesDir + '/plain.plist.json').toString('utf-8'),
+                    common.fixturesDir + '/plain.plist.json').toString('utf-8'),
             asserts = 0;
         new PlistReader(plistBinary, {
             outputFormat: 'json'
@@ -164,7 +164,7 @@ describe('Plist Reader', function() {
         }).parse();
     });
     it('should work on ipa (ios files) and output xml', function(done) {
-        var ipaBinary = fixturesDir + '/Snake.ipa',
+        var ipaBinary = common.fixturesDir + '/Snake.ipa',
             plists = 0;
         new PlistReader(ipaBinary, {
             outputFormat: 'xml'
@@ -179,7 +179,7 @@ describe('Plist Reader', function() {
         }).parse();
     });
     it('should work on ipa (ios files) and output json', function(done) {
-        var ipaBinary = fixturesDir + '/Snake.ipa',
+        var ipaBinary = common.fixturesDir + '/Snake.ipa',
             plists = 0;
         new PlistReader(ipaBinary, {
             outputFormat: 'json'

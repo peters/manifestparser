@@ -26,11 +26,10 @@
 var ApkReader = require('../lib/apkreader');
     should = require('should'),
     fs = require('fs'),
-    apkTarget = __dirname + '/fixtures/Snake.apk',
-    apkXml = fs.readFileSync(__dirname +
-            '/fixtures/apk.xml').toString('utf-8'),
-    apkJSON = fs.readFileSync(__dirname +
-            '/fixtures/apk.json').toString('utf-8');
+    common = require('./common'),
+    apkTarget = common.fixturesDir + '/Snake.apk',
+    apkXml = fs.readFileSync(common.fixturesDir + '/apk.xml').toString('utf-8'),
+    apkJSON = fs.readFileSync(common.fixturesDir + '/apk.json').toString('utf-8');
 
 describe('Apk Reader', function() {
     it('should parse android and return it as xml', function(done) {
@@ -77,7 +76,7 @@ describe('Apk Reader', function() {
     });
     it('should throw error if invalid file format', function(done) {
         (function() {
-            var plistBinary = fixturesDir + '/.apk-invalid';
+            var plistBinary = common.fixturesDir + '/.apk-invalid';
             new PlistReader(plistBinary, {
                 outputFormat: 'non-existant-format'
             }).on('manifest', function(plist) {
